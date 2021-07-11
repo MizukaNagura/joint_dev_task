@@ -24,7 +24,6 @@ echo PHP_EOL;
 
 
 $numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9];
-$numbers = [1, 5, 8, 10, 2, 3, 2, 3, 1, 4, 5, 9];
 $count = 0;
 foreach($numbers as $number){
    if($number === 3){
@@ -69,13 +68,10 @@ $numbers1 = [1, 2, 3, 4, 5];
 
 $numbers2 = [];
 foreach($numbers1 as $number){
-    $number= $number * 10 ;
-    array_push($numbers,$number);
+    $number *= 10;
+    array_push($numbers2,$number);
 }
-
 print_r($numbers2);
-
-
 
 echo PHP_EOL;
 
@@ -123,8 +119,9 @@ echo PHP_EOL;
 $foods = ["いか", "たこ", "うに", "しゃけ", "うにぎり", "うに軍艦", "うに丼", "高級なうに"];
 
 foreach($foods as $food){
-if(preg_match('/うに/', $food)){
-print('好物です');}
+if(preg_match('/うに/', $food))
+{print('好物です');}
+
 else{
     print('まぁまぁ好きです');}
 }
@@ -141,16 +138,20 @@ $sports2 = [];
 foreach($sports as $key => $sport){
     if(is_array($sport)){
         $sports2 = array_merge($sports2, $sport);
-    }else{
+    }
+    else{
         array_push($sports2, $sport);
     }
 }
+
 $sports2 = array_unique($sports2);
 $sports2 = array_values($sports2);
+
 $sports3 = [];
 foreach($sports2 as $key => $sport){
     $number = $key + 1;
     $sport3 = "No.".$number." ".$sport;
+
     array_push($sports3, $sport3);
 }
 
@@ -259,22 +260,24 @@ echo PHP_EOL;
 
 
 ## Q18. 年齢を用いた場合分けを利用して，期待する出力結果になるようなManクラスを作成して下さい。
+class Man
+{
 
-class Man{
+    protected $name;
+    protected $age;
 
-protected $name;
-protected $age;
+    function __construct($user_name, $user_age) {
+        $this->name = $user_name;
+        $this->age = $user_age;
+    }
 
-function __construct($user_name,$user_age){
-$this->name=$user_name;
-$this->age=$user_age;
-}
-function introduce(){
-if($this->age >=20){
-print('こんにちは".$this->name."と申します。宜しくお願いいたします。');
-}else{
-print('はいさいまいど〜，".$this->name."です！！！');}
-}
+    function introduce() {
+     if($this->age >= 20){
+            print("こんにちは,".$this->name."と申します。宜しくお願いいたします。".PHP_EOL);
+     }else{
+            print("はいさいまいど〜，".$this->name."です！！！".PHP_EOL);
+        }
+    }
 
 }
 
@@ -283,7 +286,6 @@ $man2 = new Man("ゆたぼん", 10);
 
 $man1->introduce();
 $man2->introduce();
-
 
 echo PHP_EOL;
 
